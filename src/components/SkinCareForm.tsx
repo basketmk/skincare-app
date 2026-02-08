@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import type { SkinCareItem, Screen } from "../types/type";
 import { v4 as uuidv4 } from "uuid";
+import Button from "@mui/material/Button";
 
 type Props = {
   onAdd: (item: SkinCareItem) => void;
@@ -48,7 +49,7 @@ export const SkinCareForm = ({ onAdd, toggleScreen }: Props) => {
               <div className="w-[22%]">商品名 :</div>
               <input
                 type="text"
-                className="border border-black rounded-xl p-1 w-[78%]"
+                className="border rounded-xl p-1 w-[78%]"
                 {...register("productName")}
               />
             </div>
@@ -56,7 +57,7 @@ export const SkinCareForm = ({ onAdd, toggleScreen }: Props) => {
               <div className="mr-2 w-[22%]">ブランド :</div>
               <input
                 type="text"
-                className="border border-black rounded-xl p-1 w-[78%]"
+                className="border rounded-xl p-1 w-[78%]"
                 {...register("brand")}
               />
             </div>
@@ -64,7 +65,7 @@ export const SkinCareForm = ({ onAdd, toggleScreen }: Props) => {
               <div className="mr-2 w-[22%]">カテゴリ :</div>
               <input
                 type="text"
-                className="border border-black rounded-xl p-1 w-[78%]"
+                className="border rounded-xl p-1 w-[78%]"
                 {...register("category")}
               />
             </div>
@@ -82,12 +83,14 @@ export const SkinCareForm = ({ onAdd, toggleScreen }: Props) => {
             </div>
           </div>
         </div>
-        <button
+        <Button
+          variant="contained"
+          disableElevation
           type="submit"
-          className="ring rounded-xl w-[50%] p-2 mt-4 bg-green-300 cursor-pointer"
+          className="ring rounded-xl w-[50%] p-2 mt-4  cursor-pointer"
         >
-          登録する
-        </button>
+          登録
+        </Button>
       </form>
     </div>
   );

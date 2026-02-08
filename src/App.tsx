@@ -17,7 +17,7 @@ function App() {
   };
 
   return (
-    <div className="bg-pink-200 h-screen">
+    <div className="h-screen bg-[#11171d] text-white">
       <header className="font-bold text-2xl">
         スキンケア自分だけの評価ノート
       </header>
