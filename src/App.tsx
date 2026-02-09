@@ -3,6 +3,7 @@ import "./App.css";
 import { SkinCareList } from "./components/SkinCareList";
 import type { Screen, SkinCareItem } from "./types/type";
 import { SkinCareForm } from "./components/SkinCareForm";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 
 function App() {
   const [screen, setScreen] = useState<Screen>("home");
@@ -17,42 +18,42 @@ function App() {
   };
 
   return (
-    <div className="h-screen bg-[#11171d] text-white">
-      <header className="font-bold text-2xl">
+    <Box sx={{ minHeight: "100vh", bgcolor: "#11171b", color: "white", p: 1 }}>
+      <Typography variant="h5" fontWeight="bold" mb={2}>
         スキンケア自分だけの評価ノート
-      </header>
+      </Typography>
 
       {screen === "home" && (
-        <div>
-          <button
-            className="border rounded-xl px-2 py-1 mt-1"
+        <Stack>
+          <Button
+            variant="outlined"
+            sx={{ alignSelf: "flex-center", borderRadius: 2 }}
             onClick={() => toggleScreen("form")}
           >
             ＋新規登録
-          </button>
-          <div>
-            <div className="grid grid-cols-3 gap-2 mx-1">
-              <SkinCareList skinCareItems={skinCareItems} />
-            </div>
-          </div>
-        </div>
+          </Button>
+          <Grid container spacing={2}>
+            <SkinCareList skinCareItems={skinCareItems} />
+          </Grid>
+        </Stack>
       )}
 
       {screen === "form" && (
-        <div>
-          <button
-            className="border rounded-xl px-2 py-1 mt-1"
+        <Stack spacing={2}>
+          <Button
+            variant="outlined"
+            sx={{ alighnSelf: "flex-start", borderRadius: 2 }}
             onClick={() => toggleScreen("home")}
           >
             戻る
-          </button>
+          </Button>
           <SkinCareForm
             onAdd={handleAddSkinCareItems}
             toggleScreen={toggleScreen}
           />
-        </div>
+        </Stack>
       )}
-    </div>
+    </Box>
   );
 }
 
