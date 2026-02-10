@@ -21,6 +21,7 @@ type Props = {
 export const SkinCareForm = ({ onAdd, toggleScreen }: Props) => {
   const { register, handleSubmit, reset } = useForm<SkinCareItem>({
     defaultValues: {
+      id: "",
       productName: "",
       brand: "",
       category: "",

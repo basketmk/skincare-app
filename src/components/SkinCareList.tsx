@@ -1,4 +1,18 @@
 import type { SkinCareItem } from "../types/type";
+import {
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+} from "@mui/material";
 
 type Props = {
   skinCareItems: SkinCareItem[];
@@ -6,34 +20,20 @@ type Props = {
 
 export const SkinCareList = ({ skinCareItems }: Props) => {
   return (
-    <>
-      {skinCareItems.map((item: SkinCareItem) => {
-        return (
-          <div className="border rounded-xl px-1 py-2">
-            <div key={item.id}>
-              <div className="flex items-center justify-between px-5">
-                <div>商品名：</div>
-                <div>{item.productName}</div>
-              </div>
-
-              <div className="flex items-center justify-between px-5">
-                <div>ブランド：</div>
-                <div>{item.brand}</div>
-              </div>
-
-              <div className="flex items-center justify-between px-5">
-                <div>カテゴリ：</div>
-                <div>{item.category}</div>
-              </div>
-
-              <div className="flex items-center justify-between px-5">
-                <div>総合評価：</div>
-                <div>{item.evaluation}</div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </>
+    <Box sx={{ width: "100%" }}>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>商品名</TableCell>
+            <TableCell>ブランド</TableCell>
+            <TableCell>カテゴリ</TableCell>
+            <TableCell>総合評価</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {}
+        </TableBody>
+      </Table>
+    </Box>
   );
 };
