@@ -1,7 +1,17 @@
 import { useForm } from "react-hook-form";
 import type { SkinCareItem, Screen } from "../types/type";
 import { v4 as uuidv4 } from "uuid";
-import Button from "@mui/material/Button";
+import {
+  Box,
+  Button,
+  FormControl,
+  Stack,
+  Typography,
+  TextField,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 type Props = {
   onAdd: (item: SkinCareItem) => void;
@@ -40,58 +50,38 @@ export const SkinCareForm = ({ onAdd, toggleScreen }: Props) => {
   };
 
   return (
-    <div className="w-full">
-      <div>入力フォーム</div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center space-y-2">
-          <div className="w-[50%]">
-            <div className="flex items-center justify-between">
-              <div className="w-[22%]">商品名 :</div>
-              <input
-                type="text"
-                className="border rounded-xl p-1 w-[78%]"
-                {...register("productName")}
-              />
-            </div>
-            <div className="flex items-center justify-between mt-2">
-              <div className="mr-2 w-[22%]">ブランド :</div>
-              <input
-                type="text"
-                className="border rounded-xl p-1 w-[78%]"
-                {...register("brand")}
-              />
-            </div>
-            <div className="flex items-center justify-between mt-2">
-              <div className="mr-2 w-[22%]">カテゴリ :</div>
-              <input
-                type="text"
-                className="border rounded-xl p-1 w-[78%]"
-                {...register("category")}
-              />
-            </div>
-            <div className="flex items-center justify-between mt-2">
-              <div className="mr-2 w-[22%]">総合評価 :</div>
-              <select
-                className="w-[78%] border rounded-xl"
-                {...register("evaluation")}
-              >
-                <option value=""></option>
-                {evaluations.map((e) => {
-                  return <option>{e}</option>;
-                })}
-              </select>
-            </div>
-          </div>
-        </div>
-        <Button
-          variant="contained"
-          disableElevation
-          type="submit"
-          className="ring rounded-xl w-[50%] p-2 mt-4  cursor-pointer"
-        >
-          登録
-        </Button>
-      </form>
-    </div>
+    <Box sx={{ width: "100%" }}>
+      <Typography variant="h6" fontWeight="bold" mb={2}>
+        入力フォーム
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+        <Stack spacing={2} sx={{ maxWidth: 520 }}>
+          <TextField label="商品名" fullWidth {...register("productName")} />
+          <TextField label="ブランド" fullWidth {...register("brand")} />
+          <TextField label="カテゴリ" fullWidth {...register("category")} />
+          <FormControl fullWidth>
+            <InputLabel id="evaluation-label">総合評価</InputLabel>
+            <Select
+              labelId="evaluation-label"
+              label="総合評価"
+              defaultValue=""
+              {...register("evaluation")}
+            >
+              <MenuItem value="">
+                <em>未選択</em>
+              </MenuItem>
+              {evaluations.map((e) => (
+                <MenuItem key={e} value={e}>
+                  {e}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button variant="contained" disableElevation type="submit">
+            登録
+          </Button>
+        </Stack>
+      </Box>
+    </Box>
   );
 };
