@@ -18,7 +18,7 @@ function App() {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#11171b", color: "white", p: 1 }}>
+    <Box sx={{ minHeight: "100vh", bgcolor: "", color: "", p: 1 }}>
       <Typography variant="h5" fontWeight="bold" mb={2}>
         スキンケア自分だけの評価ノート
       </Typography>
