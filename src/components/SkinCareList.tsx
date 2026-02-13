@@ -31,7 +31,16 @@ export const SkinCareList = ({ skinCareItems }: Props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {}
+          {skinCareItems.map((item) => {
+            return (
+              <TableRow key={item.id} hover sx={{ cursor: "pointer" }}>
+                <TableCell>{item.productName}</TableCell>
+                <TableCell>{item.brand}</TableCell>
+                <TableCell>{item.category}</TableCell>
+                <TableCell>{item.evaluation}</TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </Box>
