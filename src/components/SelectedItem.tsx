@@ -9,7 +9,7 @@ export const SelectedItem = ({ item }: Props) => {
   return (
     <Box
       sx={{
-        backgroundColor: "#ffffff",
+        backgroundColor: "#ffccff",
         border: "1px solid #f1f1f1",
         borderRadius: "16px",
         padding: "20px",
@@ -57,7 +57,7 @@ export const SelectedItem = ({ item }: Props) => {
             fontSize: "12px",
           }}
         >
-          ★ {item.evaluation}
+          {item.evaluation}
         </Typography>
       </Box>
     </Box>
