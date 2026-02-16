@@ -20,6 +20,7 @@ function App() {
 
   //-----商品選択時詳細-----
   const [selectedItemId, setSelectedItemId] = useState<string>("");
+  const selectedItem = skinCareItems.find((item) => item.id === selectedItemId);
 
   const toggleSelectedItemId = (id: string) => {
     setSelectedItemId(id);
@@ -66,7 +67,7 @@ function App() {
       )}
 
       {selectedItemId !== "" && (
-        <Stack spacing={2}>
+        <Stack spacing={2} sx={{ width: "100%", height: "100%" }}>
           <Button
             variant="outlined"
             sx={{ alighnSelf: "flex-start", borderRadius: 2 }}
@@ -77,7 +78,7 @@ function App() {
           >
             ホームへ
           </Button>
-          <SelectedItem />
+          {selectedItem && <SelectedItem item={selectedItem} />}
         </Stack>
       )}
     </Box>

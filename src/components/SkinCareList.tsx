@@ -22,8 +22,8 @@ export const SkinCareList = ({
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>商品名</TableCell>
             <TableCell>ブランド</TableCell>
+            <TableCell>商品名</TableCell>
             <TableCell>カテゴリ</TableCell>
             <TableCell>総合評価</TableCell>
           </TableRow>
@@ -37,8 +37,8 @@ export const SkinCareList = ({
                 sx={{ cursor: "pointer" }}
                 onClick={() => toggleSelectedItemId(item.id)}
               >
-                <TableCell>{item.productName}</TableCell>
                 <TableCell>{item.brand}</TableCell>
+                <TableCell>{item.productName}</TableCell>
                 <TableCell>{item.category}</TableCell>
                 <TableCell>{item.evaluation}</TableCell>
               </TableRow>

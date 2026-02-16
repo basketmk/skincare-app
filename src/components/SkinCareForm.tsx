@@ -57,8 +57,8 @@ export const SkinCareForm = ({ onAdd, toggleScreen }: Props) => {
       </Typography>
       <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
-          <TextField label="商品名" fullWidth {...register("productName")} />
           <TextField label="ブランド" fullWidth {...register("brand")} />
+          <TextField label="商品名" fullWidth {...register("productName")} />
           <TextField label="カテゴリ" fullWidth {...register("category")} />
           <FormControl fullWidth>
             <InputLabel id="evaluation-label">総合評価</InputLabel>
