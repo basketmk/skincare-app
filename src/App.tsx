@@ -4,6 +4,7 @@ import { SkinCareList } from "./components/SkinCareList";
 import type { Screen, SkinCareItem } from "./types/type";
 import { SkinCareForm } from "./components/SkinCareForm";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { SelectedItem } from "./components/SelectedItem";
 
 function App() {
   const [screen, setScreen] = useState<Screen>("home");
@@ -17,13 +18,20 @@ function App() {
     setScreen(screen);
   };
 
+  //-----商品選択時詳細-----
+  const [selectedItemId, setSelectedItemId] = useState<string>("");
+
+  const toggleSelectedItemId = (id: string) => {
+    setSelectedItemId(id);
+  };
+
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "", color: "", p: 1 }}>
       <Typography variant="h5" fontWeight="bold" mb={2}>
         スキンケア自分だけの評価ノート
       </Typography>
 
-      {screen === "home" && (
+      {screen === "home" && selectedItemId === "" && (
         <Stack>
           <Button
             variant="outlined"
@@ -33,12 +41,15 @@ function App() {
             ＋新規登録
           </Button>
           <Grid container spacing={2}>
-            <SkinCareList skinCareItems={skinCareItems} />
+            <SkinCareList
+              skinCareItems={skinCareItems}
+              toggleSelectedItemId={toggleSelectedItemId}
+            />
           </Grid>
         </Stack>
       )}
 
-      {screen === "form" && (
+      {screen === "form" && selectedItemId === "" && (
         <Stack spacing={2}>
           <Button
             variant="outlined"
@@ -51,6 +62,22 @@ function App() {
             onAdd={handleAddSkinCareItems}
             toggleScreen={toggleScreen}
           />
+        </Stack>
+      )}
+
+      {selectedItemId !== "" && (
+        <Stack spacing={2}>
+          <Button
+            variant="outlined"
+            sx={{ alighnSelf: "flex-start", borderRadius: 2 }}
+            onClick={() => {
+              toggleScreen("home");
+              toggleSelectedItemId("");
+            }}
+          >
+            ホームへ
+          </Button>
+          <SelectedItem />
         </Stack>
       )}
     </Box>

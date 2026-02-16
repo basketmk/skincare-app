@@ -1,24 +1,22 @@
 import type { SkinCareItem } from "../types/type";
 import {
   Box,
-  Dialog,
-  DialogContent,
-  DialogTitle,
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
-  Paper,
-  Typography,
 } from "@mui/material";
 
 type Props = {
   skinCareItems: SkinCareItem[];
+  toggleSelectedItemId: (id: string) => void;
 };
 
-export const SkinCareList = ({ skinCareItems }: Props) => {
+export const SkinCareList = ({
+  skinCareItems,
+  toggleSelectedItemId,
+}: Props) => {
   return (
     <Box sx={{ width: "100%" }}>
       <Table size="small">
@@ -33,7 +31,12 @@ export const SkinCareList = ({ skinCareItems }: Props) => {
         <TableBody>
           {skinCareItems.map((item) => {
             return (
-              <TableRow key={item.id} hover sx={{ cursor: "pointer" }}>
+              <TableRow
+                key={item.id}
+                hover
+                sx={{ cursor: "pointer" }}
+                onClick={() => toggleSelectedItemId(item.id)}
+              >
                 <TableCell>{item.productName}</TableCell>
                 <TableCell>{item.brand}</TableCell>
                 <TableCell>{item.category}</TableCell>
